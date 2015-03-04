@@ -31,6 +31,7 @@ class Chocobo(models.Model):
     cunning_source = models.CharField(max_length=1, blank=True, null=True)
     mother = models.ForeignKey("Chocobo",related_name="+", blank=True, null=True)
     father = models.ForeignKey("Chocobo",related_name="+", blank=True, null=True)
+    jockey = models.ForeignKey(User)
     def __unicode__(self):
         return "{} ".format(self.name)
 
@@ -53,4 +54,12 @@ class Ability(models.Model):
     img1 = models.ImageField(upload_to = "choco\static")
     def __unicode__(self):
         return "{} ".format(self.name)
-        
+  
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+
+class NewUserForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    

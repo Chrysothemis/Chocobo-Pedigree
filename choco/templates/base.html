@@ -8,26 +8,24 @@
 </head>
 
 <body>
- {% for c in chocobo %}
-  <div>
-    <table>
-    <tr {%if c.sex = "F" %}class = "female_text"{% endif %} {%if c.sex = "M" %}class = "male_text"{% endif %} ><td>{{c.name}}</td><td>{{c.sex}}</td></tr>
-    <tr><td>{{c.color}}</td> <td>{{c.pedigree}}</td> </tr>
-    <tr><td>Speed:</td><td> {{c.speed_stars}}</td></tr>
-    <tr><td>Acceleration:</td><td> {{c.acc_stars}}</td></tr>
-    <tr><td>Endurance:</td><td> {{c.end_stars}}</td></tr>
-    <tr><td>Stamina:</td><td> {{c.stamina_stars}}</td></tr>
-    <tr><td>Cunning:</td><td> {{c.cunning_stars}}</td></tr>
-    <tr><td>Hereditary Ability:</td><td> {{c.ability_h}}</td></tr>
-    <tr><td>Acquired Ability:</td><td> {{c.ability_a}}</td></tr>
-    <tr><td>Weather:</td><td>{{c.weather}}</td></br></tr>
-    <tr><td>Mother:</td><td>{{c.mother}}</td></br></tr>
-    <tr><td>Father:</td><td>{{c.father}}</td></br></tr>
-    <tr><td><a href="{{c.img_link}}">Media</a></td></tr>
-    </table>
-  </div>
+
 <div>
-{%endfor%} 
+<h1>Chocobo-Pedigree</h1>
+<p>
+    Welcome! This is a WIP site for saving and sharing your Final Fantasy XIV racing chocobo's family tree!</br>
+    Simple make a <a href="/register">free account</a> and add your chocobos to create a clean linkable chocobo family tree.
+    </br>
+    </br>
+    {% if user.is_authenticated %}
+        <a href="/user/{{user.id}}">My Chocobos</a>
+        </br>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <a href="/register"> Register</a>
+        </br>
+        <a href="/login"> Login</a>
+    {% endif %}
+</p>
 </div>
 </body>
 </html>

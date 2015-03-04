@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chocobo Pedigree</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static "site.css" %}" />
+</head>
+
+<body> 
+
+<div >
+<center><h2>Create a New User</h2></center>
+<form action="{% url "register_view" %}" method="post">{% csrf_token %}
+        {{ new_user_form.non_field_errors }}
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% endif %}
+        <div class="fieldWrapper">
+            {{ new_user_form.username.errors }}
+            <label for="id_subject">Username:</label>
+            {{ new_user_form.username }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_user_form.password.errors }}
+            <label for="id_subject">Password:</label>
+            {{ new_user_form.password }}
+        </div>
+        </br>
+        
+        <input type="submit" value="Register" />
+    </form>
+    
+    </div>
+
+
+</body>
+</html>
