@@ -17,7 +17,7 @@ class Chocobo(models.Model):
     stamina_stat = models.IntegerField( blank=True, null=True)
     cunning_stat = models.IntegerField( blank=True, null=True)
     sex = models.CharField(max_length=1)
-    color = models.ForeignKey("Color", blank=True); 
+    color = models.ForeignKey("Color", blank=True, null=True); 
     ability_h = models.ForeignKey("Ability", related_name="+", blank=True, null=True)
     ability_a = models.ForeignKey("Ability",  related_name="+", blank=True, null=True)
     rank = models.IntegerField( blank=True, null=True)
@@ -62,4 +62,21 @@ class LoginForm(forms.Form):
 class NewUserForm(forms.Form):
     username = forms.CharField(max_length=100)
     password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    
+class New_Choco_Form(forms.Form):  
+    name = forms.CharField(max_length=100)
+    pedigree = forms.CharField(max_length=2)
+    speed_stars = forms.IntegerField()
+    acc_stars = forms.IntegerField()
+    end_stars = forms.IntegerField()
+    stamina_stars = forms.IntegerField()
+    cunning_stars = forms.IntegerField()
+    sex = forms.CharField(max_length=1)
+    mother = forms.ModelChoiceField(Chocobo.objects.all(),required=False)
+    father = forms.ModelChoiceField(Chocobo.objects.all(),required=False)
+    def __init__(self, user=None, *args, **kwargs):
+        super(New_Choco_Form, self).__init__(*args, **kwargs)
+        if user:
+            self.fields['mother'].queryset = Chocobo.objects.all().filter(jockey = user)
+            self.fields['father'].queryset = Chocobo.objects.all().filter(jockey = user)
     

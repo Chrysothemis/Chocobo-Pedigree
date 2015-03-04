@@ -1,0 +1,90 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chocobo Pedigree</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static "site.css" %}" />
+</head>
+
+<body> 
+
+<div >
+<center><h2>Add Chocobo</h2></center>
+<form action="{% url "new_choco_view" %}" method="post">{% csrf_token %}
+        {{ new_choco_form.non_field_errors }}
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% endif %}
+        <div class="fieldWrapper">
+            {{ new_choco_form.name.errors }}
+            <label for="id_subject">Name:</label>
+            {{ new_choco_form.name }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.pedigree.errors }}
+            <label for="id_subject">Pedigree:</label>
+            {{ new_choco_form.pedigree }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.speed_stars.errors }}
+            <label for="id_subject">Speed Stars:</label>
+            {{ new_choco_form.speed_stars }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.acc_stars.errors }}
+            <label for="id_subject">Acceleration Stars:</label>
+            {{ new_choco_form.acc_stars }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.end_stars.errors }}
+            <label for="id_subject">Endurance Stars:</label>
+            {{ new_choco_form.end_stars }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.stamina_stars.errors }}
+            <label for="id_subject">Stamina Stars:</label>
+            {{ new_choco_form.stamina_stars }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.cunning_stars.errors }}
+            <label for="id_subject">Cunning Stars:</label>
+            {{ new_choco_form.cunning_stars }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.sex.errors }}
+            <label for="id_subject">Sex:</label>
+            {{ new_choco_form.sex }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.father.errors }}
+            <label for="id_subject">Father:</label>
+            {{ new_choco_form.father }}
+        </div>
+        </br>
+        <div class="fieldWrapper">
+            {{ new_choco_form.mother.errors }}
+            <label for="id_subject">Mother:</label>
+            {{ new_choco_form.mother }}
+        </div>
+        </br>
+        </br>
+        <input type="submit" value="Submit" />
+    </form>
+    
+    </div>
+{% if user.is_authenticated %}
+    <div>Logged in as {{user}}</div>
+{% endif %}
+
+</body>
+</html>

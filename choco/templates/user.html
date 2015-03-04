@@ -29,5 +29,9 @@
 <div>
 {%endfor%} 
 </div>
+</br>
+{% if user.is_authenticated %}
+    <div>Logged in as {{user}}</div>
+{% endif %}
 </body>
 </html>

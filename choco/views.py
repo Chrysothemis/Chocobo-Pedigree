@@ -72,3 +72,34 @@ def register_view(request):
             return register_failed(request, error_message)
     else:
         return redirect('home')
+        
+@login_required  
+def new_choco(request):
+    #if request.method == 'POST':
+    new_choco_form = New_Choco_Form(user=request.user)
+    #else:
+    #    new_choco_form = New_Choco_Form()
+    return render(request, 'new_choco.html', {'new_choco_form':new_choco_form })
+
+@login_required      
+def new_choco_view(request):
+    if request.method == 'POST':
+        # print 'I see the post!'
+        new_choco_form = New_Choco_Form(None, request.POST, request.FILES)
+        if new_choco_form.is_valid():
+            # print 'it is valid!'
+            name = new_choco_form.cleaned_data['name']
+            pedigree = new_choco_form.cleaned_data['pedigree']
+            speed_stars = new_choco_form.cleaned_data['speed_stars']
+            acc_stars = new_choco_form.cleaned_data['acc_stars']
+            end_stars = new_choco_form.cleaned_data['end_stars']
+            stamina_stars = new_choco_form.cleaned_data['stamina_stars']
+            cunning_stars = new_choco_form.cleaned_data['cunning_stars']
+            sex = new_choco_form.cleaned_data['sex']
+             
+            new_choco = Chocobo(name=name, pedigree=pedigree, speed_stars = speed_stars,  acc_stars=acc_stars, 
+                                  end_stars = end_stars, stamina_stars = stamina_stars, cunning_stars =cunning_stars, sex = sex, jockey = request.user)
+            new_choco .save()
+
+            return redirect('home')
+    return new_choco(request)

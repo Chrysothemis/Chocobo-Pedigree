@@ -15,4 +15,6 @@ urlpatterns = patterns('',
     url(r'^login/', 'choco.views.login_view', name='login'),
     url(r'^register/', 'choco.views.register', name='register'),
     url(r'register_view/', 'choco.views.register_view', name='register_view'),
+    url(r'^new_choco/', 'choco.views.new_choco', name='new_choco'),
+    url(r'new_choco_view/', 'choco.views.new_choco_view', name='new_choco_view'),
 )

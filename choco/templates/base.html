@@ -19,13 +19,20 @@
     {% if user.is_authenticated %}
         <a href="/user/{{user.id}}">My Chocobos</a>
         </br>
+        <div><a href="/new_choco">Add Chocobo</a></div>
+        </br>
         <a href="/logout">Logout</a>
     {% else %}
         <a href="/register"> Register</a>
         </br>
         <a href="/login"> Login</a>
     {% endif %}
+    
+    
 </p>
 </div>
+{% if user.is_authenticated %}
+    <div>Logged in as {{user}}</div>
+{% endif %}
 </body>
 </html>
