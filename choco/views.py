@@ -15,7 +15,23 @@ def index(request):
     
 def choco_page(request,chocobo_id):
     chocobo = Chocobo.objects.get(pk=chocobo_id)
-    return render(request, 'choco_page.html', {'c': chocobo })
+    i = 0
+    family_tree = [(chocobo, i)]
+    recurse_tree(chocobo, i, family_tree)
+    print family_tree
+	
+    return render(request, 'choco_page.html', {'family': family_tree })
+   
+def recurse_tree(choco, i, family_tree):
+    i = i + 1
+    father = choco.father
+    mother = choco.mother
+    if father:
+        family_tree.append((father, i))
+        recurse_tree(father, i, family_tree)
+    if mother:
+        family_tree.append((mother, i))
+        recurse_tree(mother, i, family_tree)
 
 def user_page(request, user_id):
     chocobos = Chocobo.objects.all().filter(jockey = user_id)
