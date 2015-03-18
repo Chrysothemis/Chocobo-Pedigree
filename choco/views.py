@@ -20,7 +20,7 @@ def choco_page(request,chocobo_id):
     recurse_tree(chocobo, i, family_tree)
     print family_tree
 	
-    return render(request, 'choco_page.html', {'family': family_tree })
+    return render(request, 'choco_page.html', {'family': family_tree , 'i':0})
    
 def recurse_tree(choco, i, family_tree):
     i = i + 1

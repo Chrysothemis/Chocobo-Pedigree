@@ -8,25 +8,25 @@
 </head>
 
 <body> 
-	<div>
-		{% for c in family %}
+	{% for c in family %}
+		<!--%if c.1 > family[family.index(c)-1)].1 %}<div> {% endif %--->
 			<table>
-				<tr {%if c.1.sex = "F" %}class = "female_text"{% endif %} {%if c.1.sex = "M" %}class = "male_text"{% endif %} ><td>{{c.1.name}}</td><td>{{c.1.sex}}</td></tr>
-				<tr><td>{{c.color}}</td><td>{{c.pedigree}}</td> </tr>
-				<tr><td>Speed:</td><td> {{c.speed_stars}}</td></tr>
-				<tr><td>Acceleration:</td><td> {{c.acc_stars}}</td></tr>
-				<tr><td>Endurance:</td><td> {{c.end_stars}}</td></tr>
-				<tr><td>Stamina:</td><td> {{c.stamina_stars}}</td></tr>
-				<tr><td>Cunning:</td><td> {{c.cunning_stars}}</td></tr>
-				<tr><td>Hereditary Ability:</td><td> {{c.ability_h}}</td></tr>
-				<tr><td>Acquired Ability:</td><td> {{c.ability_a}}</td></tr>
-				<tr><td>Weather:</td><td>{{c.weather}}</td></br></tr>
-				<tr><td>Mother:</td><td>{{c.mother}}</td></br></tr>
-				<tr><td>Father:</td><td>{{c.father}}</td></br></tr>
-				<tr><td><a href="{{c.img_link}}">Media</a></td></tr>
+				<tr {%if c.0.sex = "F" %}class = "female_text"{% endif %} {%if c.0.sex = "M" %}class = "male_text"{% endif %} ><td>{{c.0.name}}</td><td>{{c.0.sex}}</td></tr>
+				<tr><td>{{c.0.color}}</td><td>{{c.0.pedigree}}</td> </tr>
+				<tr><td>Speed:</td><td> {{c.0.speed_stars}}</td></tr>
+				<tr><td>Acceleration:</td><td> {{c.0.acc_stars}}</td></tr>
+				<tr><td>Endurance:</td><td> {{c.0.end_stars}}</td></tr>
+				<tr><td>Stamina:</td><td> {{c.0.stamina_stars}}</td></tr>
+				<tr><td>Cunning:</td><td> {{c.0.cunning_stars}}</td></tr>
+				<tr><td>Hereditary Ability:</td><td> {{c.0.ability_h}}</td></tr>
+				<tr><td>Acquired Ability:</td><td> {{c.0.ability_a}}</td></tr>
+				<tr><td>Weather:</td><td>{{c.0.weather}}</td></br></tr>
+				<tr><td>Mother:</td><td>{{c.0.mother}}</td></br></tr>
+				<tr><td>Father:</td><td>{{c.0.father}}</td></br></tr>
+				<tr><td><a href="{{c.0.img_link}}">Media {{i}}</a></td></tr>
 			</table>
-  </div>
-		{% endfor %}
+		<!--#%if c.1 > family[family.index(c)-1)].1 %}</div> {% endif %--->
+	{% endfor %}
 </br>
 {% if user.is_authenticated %}
     <div>Logged in as {{user}}</div>
